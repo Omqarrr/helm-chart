@@ -1,0 +1,15 @@
+apiVersion: ec2.services.k8s.aws/v1alpha1
+kind: VPC
+metadata:
+  name: {{ .Values.metadata.vpcName }}
+  namespace: {{ .Values.metadata.namespace }}
+spec:
+  cidrBlocks: 
+  - {{ .Values.cidrBlockRange }}
+  enableDNSSupport: true
+  enableDNSHostnames: true
+  tags:
+    - key: Name
+      value: {{ .Values.vpcName }}
+    - key: ENV
+      value: {{ .Values.environmentName }}

@@ -1,0 +1,11 @@
+apiVersion: s3.services.k8s.aws/v1alpha1
+kind: Bucket
+metadata:
+  name: {{ .Values.metadata.bucketName }}
+  namespace: {{ .Values.metadata.namespace }}
+spec:
+  name: {{ .Values.spec.bucketName }}
+  tagging:
+    tagSet:
+    - key: ENV
+      value: {{ .Values.environmentName }}
